@@ -27,7 +27,7 @@ connect:
       push word 0x2823        ; Pushes 9000 in hex as a WORD.
       push word 0x02          ; Pushes AF_INET into the stack.
       mov ecx, esp            ; Copies the value of ESP into ECX.
-      mov dl, 30              ; The value 30 is inserted into DL, as this argument requires the length of the struct.
+      mov dl, 30              ; The value 30 is inserted into DL. Anything above 16 can be used.
       int 0x80                ; Call to kernel.
 
       xor ecx, ecx            ; Zeroes out ECX.
