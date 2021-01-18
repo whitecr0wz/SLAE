@@ -11,7 +11,7 @@ _start:
        cld                       ; Should clear the direction flag. However, it is used as a NOP equivalent.
        mov esi, 0x68732f2e       ; Saves value "hs/.". If incremented by 1, it should possess value "hs//".
        inc esi                   ; Increments ESI.
-       cdq                       ; Zeroes out EDX.
+       cdq                       ; Zeroes out EDX. Also a NOP Equivalent.
        mov edi, 0x6e69622e       ; Saves value "nib.". If incremented by 1, it should possess value "bin/".
        inc edi                   ; Increments EDI.
 
