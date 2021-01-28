@@ -1,5 +1,6 @@
 # Author: SLAE-27812 (Felipe Winsnes)
 
+from ctypes import *
 from Crypto.Cipher import Blowfish
 import sys, os
 
@@ -27,32 +28,8 @@ for x in bytearray(decrypt):
 
 print '"' + (decrypted) + '"'
 
-shellcode = '"' + (decrypted) + '"'
+buffer = create_string_buffer(shellcode, len(shellcode))
+print " "
+boom = cast(buffer, CFUNCTYPE(c_void_p))
 
-template = (
-
-"#include <stdio.h>" + "\r\n"
-"#include <string.h>" + "\r\n"
-
-"unsigned char code[] = \\" + '\r\n'
-+ shellcode + ";" + "\r\n" + "\r\n"
-
-"main()" + "\r\n"
-"{" + "\r\n"
-
-  'printf("\\n");' + "\r\n"
-
-        "int (*ret)() = (int(*)())code;" + "\r\n"
-
-        "ret();" + "\r\n"
-
-"}"
-
-)
-
-f = open ("test.c", "w")
-f.write(template)
-f.close()
-
-os.system("/usr/bin/gcc ./test.c -o test -fno-stack-protector -z execstack -Wall -Wno-implicit && /bin/rm ./test.c && ./test")
-os.system("/bin/rm ./test")
+boom()
