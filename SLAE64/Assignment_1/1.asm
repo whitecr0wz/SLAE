@@ -105,7 +105,7 @@ halt:
 
         xor rsi, rsi           ; Zeroes out RSI.
 
-        add si, 't '           ; Inserts value 't ' into RSI
+        add si, 't '           ; Inserts value 't ' into SI
         push rsi               ; Pushes the value of RSI into the stack.
 
         mov rsi, 'Incorrec'    ; Inserts value 'Incorrec' into RSI
