@@ -146,6 +146,7 @@ question:
 read:
 
         xor rax, rax           ; Zeroes out RAX.
+        xor rdi, rdi           ; Zeroes out RDI.
         xor rdx, rdx           ; Zeroes out RDX.
 
         push rdx               ; Pushes the NULL DWORD (0x00000000) of RDX into the stack.
