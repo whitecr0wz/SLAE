@@ -85,7 +85,7 @@ halt:
 
         push rdi               ; Pushes the NULL DWORD (0x00000000) of RDI into the stack.
         pop rbp                ; Pops the NULL DWORD in RBP.
-        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without these combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <)
+        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without this combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <)
 
         inc al                 ; Increments AL, giving the value 1 for the syscall write.
         inc rdi                ; Increments RDI, giving the value of 1, arranging STDOUT, printing the message on the screen.
@@ -124,7 +124,7 @@ question:
 
         push rdi               ; Pushes the NULL DWORD (0x00000000) of RDI into the stack.
         pop rbp                ; Pops the NULL DWORD in RBP.
-        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without these combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <).
+        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without this combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <).
 
         inc al                 ; Increments AL, giving the value 1 for the syscall write.
         inc rdi                ; Increments RDI, giving the value of 1, arranging STDOUT, printing the message on the screen.
@@ -150,7 +150,7 @@ read:
 
         push rdx               ; Pushes the NULL DWORD (0x00000000) of RDX into the stack.
         pop rbp                ; Pops the NULL DWORD in RBP.
-        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without these combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <).
+        push rbp               ; Pushes the NULL DWORD (0x00000000) of RBP into the stack. Without this combination of PUSH/POP instructions the printed characters would have an additional character that isn't needed (I.E an - or <).
 
         mov rsi, rsp           ; Copies the value of RSP into RSI.
 
