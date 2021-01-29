@@ -158,9 +158,7 @@ read:
         syscall                ; The syscall is executed.
 
 comparison:
-
-; Password: WjbkN3yQRpKVEFbA
-
+                               ; Password: WjbkN3yQRpKVEFbA
         mov rdi, rsp           ; Copies the value of RSP into RSI. This will copy what was read on the previous function.
 
         xor rax, rax           ; Zeroes out RAX.
