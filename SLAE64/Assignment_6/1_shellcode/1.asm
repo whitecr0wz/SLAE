@@ -12,10 +12,7 @@ _start:
             push    rbx
             mov     rdi, rsp
 
-            xor r10, r10                     ; Garbage NOP
-            lea r10, [rax + 0x48]            ; Garbage NOP
             dec rbp                          ; Garbage NOP
-            shr rbp, 15                      ; Garbage NOP
 
             push    rax
             mul rbp                          ; Garbage NOP
@@ -25,7 +22,6 @@ _start:
 
             mov     rsi, rsp
 
-            lea r12, [r15 - 14]              ; Garbage NOP
             mul r12                          ; Garbage NOP
 
             lea r9, [rbp + 9]                ; Garbage NOP
