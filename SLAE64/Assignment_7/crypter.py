@@ -16,6 +16,9 @@ def encrypt():
                            ciphertext = '%02x' % x
                            crypted += ciphertext
 
+
+            print ' '
+            print 'Encrypted shellcode in hex escape sequence:'
             print '"' + crypted + '"'
 
 def decrypt():
@@ -25,14 +28,14 @@ def decrypt():
             decrypt = obj.decrypt(message)
             decrypted = ""
 
-            print "Original shellcode in hex escape sequence:"
-
             for x in bytearray(decrypt):
 
                            decrypted += '\\x'
                            decrypt = '%02x' % x
                            decrypted += decrypt
 
+            print ' '
+            print 'Original shellcode in hex escape sequence:'
             print '"' + (decrypted) + '"'
 
 if len(sys.argv) != 4:
